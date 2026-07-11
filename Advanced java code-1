@@ -1,3 +1,4 @@
+import java.util.Scanner;
 class Sender {
 
     public void sendHi() {
@@ -18,5 +19,70 @@ class Receiver {
         }
 
         System.out.println("Receiver: Hello");
+    }
+}
+public class Operations {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        Sender sender = new Sender();
+        Receiver receiver = new Receiver();
+
+        sender.sendHi();
+        receiver.receiveHello();
+
+        while (true) {
+
+            System.out.println("\nChoose Operation");
+            System.out.println("1. Addition");
+            System.out.println("2. Subtraction");
+            System.out.println("3. Multiplication");
+            System.out.println("4. Division");
+
+            System.out.print("Enter choice: ");
+            int choice = sc.nextInt();
+
+            System.out.print("Enter first number: ");
+            int a = sc.nextInt();
+
+            System.out.print("Enter second number: ");
+            int b = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Result = " + (a + b));
+                    break;
+
+                case 2:
+                    System.out.println("Result = " + (a - b));
+                    break;
+
+                case 3:
+                    System.out.println("Result = " + (a * b));
+                    break;
+
+                case 4:
+                    if (b != 0)
+                        System.out.println("Result = " + (a / b));
+                    else
+                        System.out.println("Cannot divide by zero");
+                    break;
+
+                default:
+                    System.out.println("Invalid Choice");
+            }
+
+            System.out.print("\nDo you want another operation? (yes/no): ");
+            String ans = sc.next();
+
+            if (ans.equalsIgnoreCase("no")) {
+                sender.sendBye();
+                break;
+            }
+        }
+
+        sc.close();
     }
 }
