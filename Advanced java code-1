@@ -1,0 +1,22 @@
+class Sender {
+
+    public void sendHi() {
+        System.out.println("Sender: Hi");
+    }
+
+    public void sendBye() {
+        System.out.println("Sender: Bye");
+    }
+}
+class Receiver {
+
+    public void receiveHello() {
+        try {
+            Thread.sleep(3000);   // Wait for 3 seconds
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Receiver: Hello");
+    }
+}
